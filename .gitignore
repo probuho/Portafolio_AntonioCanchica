@@ -35,3 +35,11 @@ coverage
 .vercel
 *.tsbuildinfo
 next-env.d.ts
+
+# Certificados (opcional: descomenta si NO quieres subir certificados reales a GitHub)
+# public/certificates/*.jpg
+# public/certificates/*.jpeg
+# public/certificates/*.png
+# public/certificates/*.pdf
+# !public/certificates/README.md
+# !public/certificates/.gitkeep

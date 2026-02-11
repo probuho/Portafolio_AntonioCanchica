@@ -1,0 +1,22 @@
+# Certificado de Ejemplo - Placeholder
+
+Este es un placeholder que indica que debes subir el certificado real.
+
+Para visualizar tus certificados reales:
+
+1. Escanea o fotografía tus certificados físicos
+2. Guárdalos como archivos `.jpg` o `.png`
+3. Nómbralos exactamente como se indica en el README.md
+4. Colócalos en este directorio (`public/certificates/`)
+
+## Nombres de archivos requeridos:
+- social-media-manager.jpg
+- community-manager-online.jpg
+- community-manager.jpg
+- seguridad-electronica.jpg
+- asistente-administrativo.jpg  
+- reparacion-celulares.jpg
+- reparacion-impresoras.jpg
+- reparacion-laptops.jpg
+
+Una vez que agregues los archivos, el sistema los detectará automáticamente.
