@@ -1,110 +1,175 @@
-# 📜 Certificados - Instrucciones de Uso
+# 📜 Certificados - Sistema Flexible con Soporte PDF
 
-Este directorio contiene los certificados digitales que se mostrarán en el portafolio.
+Este directorio contiene tus certificados digitales que se mostrarán en el portafolio.
 
-## 📁 Estructura de Archivos
+## 🎉 NUEVO: Soporte para PDF y JPG/PNG
 
-Cada certificado debe estar nombrado exactamente como se especifica abajo para que aparezca correctamente en el portafolio:
+El sistema **detecta automáticamente** si tu certificado es PDF o imagen. ¡Solo súbelo!
 
-```
-public/certificates/
-├── social-media-manager.jpg
-├── community-manager-online.jpg
-├── community-manager.jpg
-├── seguridad-electronica.jpg
-├── asistente-administrativo.jpg
-├── reparacion-celulares.jpg
-├── reparacion-impresoras.jpg
-└── reparacion-laptops.jpg
-```
+## 📁 Cómo Agregar Certificados
 
-## 📋 Lista de Certificados Requeridos
+### Paso 1: Prepara tu archivo
+- **Formatos aceptados**: `.jpg`, `.jpeg`, `.png`, `.pdf`
+- **Tamaño máximo recomendado**: 2MB por archivo
+- **Nombr
 
-| Archivo | Certificado | Institución | Año |
-|---------|-------------|-------------|-----|
-| `social-media-manager.jpg` | Social Media Manager | Creative Diseños Academy | 2021 |
-| `community-manager-online.jpg` | Community Manager Online | Creative Diseños Academy | 2021 |
-| `community-manager.jpg` | Community Manager | ALPESINC Agencia de Marketing | 2021 |
-| `seguridad-electronica.jpg` | Seguridad Electrónica 1 | Instituto Keys | 2017-2018 |
-| `asistente-administrativo.jpg` | Asistente Administrativo | Academia Americana | 2015 |
-| `reparacion-celulares.jpg` | Reparación de Celulares | Academia Americana | 2014 |
-| `reparacion-impresoras.jpg` | Mantenimiento de Impresoras | Instituto Keys | 2013 |
-| `reparacion-laptops.jpg` | Técnico Reparación de Laptops | Instituto Keys | 2012 |
+a el archivo**: Usa nombres descriptivos en minúsculas con guiones
+  - ✅ Ejemplo: `social-media-manager.pdf`
+  - ✅ Ejemplo: `reparacion-laptops.jpg`
+  - ❌ Evita: `Certificado 1.PDF` o `foto cert.JPG`
 
-## 📸 Formatos Aceptados
-
-- **Imágenes**: `.jpg`, `.jpeg`, `.png`, `.webp`
-- **PDFs**: `.pdf` (se convertirán automáticamente en el visor)
-- **Tamaño recomendado**: Máximo 2MB por archivo
-- **Resolución**: Mínimo 1200px de ancho para buena calidad
-
-## 🔧 Cómo Agregar un Certificado
-
-### Opción 1: Desde archivo de imagen o PDF
-
-1. **Escanea o fotografía** tu certificado físico
-2. **Nombra el archivo** exactamente como se indica en la tabla de arriba
-3. **Copia el archivo** a este directorio (`public/certificates/`)
-4. El certificado aparecerá automáticamente cuando hagas clic en "Ver Certificado"
-
-### Opción 2: Si tu certificado está en PDF
-
-1. Convierte el PDF a imagen usando:
-   - **Online**: [PDF to JPG](https://www.ilovepdf.com/pdf_to_jpg)
-   - **Photoshop/GIMP**: Exportar como JPG
-   - **Windows**: Imprimir como imagen
-2. Guarda como `.jpg` con el nombre correcto
-3. Copia a `public/certificates/`
-
-## ✅ Verificación
-
-Para verificar que tus certificados están correctamente configurados:
-
-1. Ejecuta el proyecto: `npm run dev`
-2. Navega a la sección **CV**
-3. Haz clic en **"Ver Todas las Certificaciones"**
-4. Haz clic en **"Ver Certificado"** en  cualquier certificación
-5. El certificado debería aparecer con marca de agua
-
-## 🔒 Protección de Certificados
-
-Los certificados están protegidos con:
-
-- ✅ **Marca de agua** con tu nombre
-- ✅ **Prevención de clic derecho** (no se puede guardar la imagen)
-- ✅ **Prevención de arrastre** (no se puede arrastrar la imagen)
-- ✅ **Sin selección de texto** (no se puede copiar)
-- ✅ **Overlay transparente** para dificultar capturas
-
-## 🎨 Personalización
-
-Si quieres cambiar el diseño de la marca de agua, edita el archivo:
-```
-components/CertificateViewer.tsx
+### Paso 2: Copia el archivo a este directorio
+```bash
+public/certificates/tu-certificado.pdf
 ```
 
-Busca la sección de "Marca de agua diagonal" y personaliza:
-- Color
-- Tamaño del texto
-- Opacidad
-- Rotación
+### Paso 3: Agrega la info del certificado en CertificationsModal.tsx
 
-## 📌 Notas Importantes
+Abre el archivo: `components/CertificationsModal.tsx`
 
-- Los nombres de archivos son **sensibles a mayúsculas/minúsculas**
-- Si falta un certificado, se mostrará un placeholder indicando "Certificado no disponible"
-- Los certificados solo son visibles cuando haces clic en "Ver Certificado"
-- La marca de agua dice "ANTONIO RUIZ" y no afecta la legibilidad
+Busca la sección: `// === AGREGA MÁS CERTIFICADOS AQUÍ ===`
 
-## 🚀 ¿Listo para Deploy?
+Copia y pega este bloque:
 
-Una vez que todos los certificados estén en su lugar:
+```typescript
+{
+  title: 'Nombre del Curso',
+  institution: 'Nombre de la Institución',
+  year: '2023', // o '2020-2021' para rangos
+  description: 'Breve descripción de lo que aprendiste',
+  verified: true,
+  certificatePath: '/certificates/nombre-archivo.pdf', // o .jpg
+  category: 'desarrollo', // Ver categorías abajo
+},
+```
 
-1. Verifica que todos los archivos existan
-2. Haz commit: `git add public/certificates/ && git commit -m "📜 Agregados certificados digitales"`
-3. Push a GitHub: `git push`
-4. Deploy en Vercel actualizará automáticamente
+### Categorías Disponibles:
+
+- `'marketing'` - Marketing Digital, Community Manager, etc.
+- `'tecnico'` - Reparación de hardware, electrónica, etc.
+- `'administrativo'` - Administración, ofimática, etc.
+- `'desarrollo'` - Programación, desarrollo web, etc.
+- `'otro'` - Cualquier otro tipo de certificación
+
+## 📋 Ejemplo Completo
+
+Supongamos que tienes el certificado "Python para Data Science" en PDF:
+
+### 1. Archivo
+```
+public/certificates/python-data-science.pdf
+```
+
+### 2. En CertificationsModal.tsx
+```typescript
+{
+  title: 'Python para Data Science',
+  institution: 'Platzi',
+  year: '2024',
+  description: 'Análisis de datos con Python, Pandas y visualización',
+  verified: true,
+  certificatePath: '/certificates/python-data-science.pdf',
+  category: 'desarrollo',
+},
+```
+
+¡Y listo! El certificado aparecerá automáticamente en tu portafolio.
+
+## 🔍 El Sistema Detecta Automáticamente:
+
+- ✅ **PDFs**: Se muestran con visor de PDF integrado
+- ✅ **JPG/PNG**: Se muestran como imágenes con zoom
+- ✅ **Formato**: Muestra badge "PDF" o "IMG" en cada certificado
+- ✅ **Marca de agua**: Se aplica automáticamente a ambos formatos
+
+## 🎨 Filtros por Categoría
+
+El modal tiene filtros que organizan tus certificados:
+- **Todos** - Muestra todos los certificados
+- **Marketing Digital** - Solo certificaciones de marketing
+- **Técnico/Hardware** - Certificaciones técnicas
+- **Administrativo** - Cursos administrativos
+- **Desarrollo** - Programación y desarrollo
+- **Otros** - Otros certificados
+
+## 🚀 Workflow Rápido
+
+```bash
+# 1. Tienes tu certificado
+mi-curso-awesome.pdf
+
+# 2. Cópialo aquí
+cp mi-curso-awesome.pdf public/certificates/
+
+# 3. Edita CertificationsModal.tsx y agrega el bloque
+
+# 4. Guarda y recarga el navegador
+# ¡Listo! Tu certificado ya está visible
+```
+
+## 💡 Tips
+
+### Convertir PDF a JPG (si prefieres imagen)
+- [PDF to JPG Online](https://www.ilovepdf.com/pdf_to_jpg)
+- Photoshop: Archivo > Exportar > JPG
+- GIMP: Archivo > Exportar Como > JPG
+
+### Optimizar tamaño de archivo
+- **PDFs**: Usa [Compress PDF](https://www.ilovepdf.com/compress_pdf)
+- **Imágenes**: Usa [TinyPNG](https://tinypng.com/)
+
+### Si tienes MUCHOS certificados
+- No hay límite! Puedes agregar cuantos quieras
+- El sistema de filtros los organiza automáticamente
+- Considera crear más categorías si lo necesitas
+
+## 🔒 Protección Automática
+
+Todos los certificados están protegidos con:
+- ✅ Marca de agua con tu nombre
+- ✅ Prevención de clic derecho
+- ✅ Prevención de descarga directa
+- ✅ Overlay de protección
+
+## 📊 Estado Actual
+
+Certificados configurados: **8**
+
+| Categoría | Cantidad |
+|-----------|----------|
+| Marketing Digital | 3 |
+| Técnico/Hardware | 4 |
+| Administrativo | 1 |
+| Desarrollo | 0 |
+| Otros | 0 |
+
+## ❓ Preguntas Frecuentes
+
+**P: ¿Puedo mezclar PDFs y JPGs?**  
+R: ¡Sí! El sistema los detecta automáticamente.
+
+**P: ¿Cuántos certificados puedo agregar?**  
+R: Todos los que quieras. El sistema es dinámico.
+
+**P: ¿Qué pasa si no tengo el archivo del certificado?**  
+R: El sistema mostrará "Certificado no disponible" con un placeholder.
+
+**P: ¿Puedo cambiar las categorías?**  
+R: Sí, edita el objeto `categories` en `CertificationsModal.tsx`.
+
+**P: ¿Los PDFs se verán bien en móvil?**  
+R: Sí, el visor es completamente responsivo.
+
+## 🎓 ¡Celebra Tus Logros!
+
+Cada curso que completaste es un logro. No importa si alguien dijo que "solo hacías cursos". 
+
+**Tú estuviste aprendiendo, creciendo y mejorando constantemente.**
+
+Ahora todos esos esfuerzos tienen un lugar profesional donde brillar. 
+
+¡Estás construyendo algo increíble! 💪
 
 ---
 
-**¿Necesitas ayuda?** Revisa el archivo `components/CertificateViewer.tsx` para ver cómo funciona el sistema de visualización.
+**¿Necesitas ayuda?** Revisa `components/CertificationsModal.tsx` para ver ejemplos.
