@@ -10,7 +10,13 @@ export default function Process() {
             title: 'Consulta Inicial',
             description: 'Hablamos de tu proyecto, objetivos y visión. Primera consulta totalmente gratuita.',
             duration: '30-60 min',
-            color: 'cyber-cyan',
+            colorClasses: {
+                badge: 'bg-cyber-cyan',
+                bg: 'bg-cyber-cyan/20',
+                border: 'border-cyber-cyan/30',
+                text: 'text-cyber-cyan',
+                timeline: 'bg-cyber-cyan/30',
+            }
         },
         {
             number: '02',
@@ -18,7 +24,13 @@ export default function Process() {
             title: 'Propuesta & Cotización',
             description: 'Te envío una propuesta detallada con alcance, timeline y presupuesto transparente.',
             duration: '1-2 días',
-            color: 'cyber-purple',
+            colorClasses: {
+                badge: 'bg-cyber-purple',
+                bg: 'bg-cyber-purple/20',
+                border: 'border-cyber-purple/30',
+                text: 'text-cyber-purple',
+                timeline: 'bg-cyber-purple/30',
+            }
         },
         {
             number: '03',
@@ -26,7 +38,13 @@ export default function Process() {
             title: 'Desarrollo',
             description: 'Inicio el desarrollo con actualizaciones regulares. Puedes ver el progreso en tiempo real.',
             duration: '1-4 semanas',
-            color: 'cyber-pink',
+            colorClasses: {
+                badge: 'bg-cyber-pink',
+                bg: 'bg-cyber-pink/20',
+                border: 'border-cyber-pink/30',
+                text: 'text-cyber-pink',
+                timeline: 'bg-cyber-pink/30',
+            }
         },
         {
             number: '04',
@@ -34,7 +52,13 @@ export default function Process() {
             title: 'Revisión & Ajustes',
             description: 'Revisamos juntos el proyecto. Hago los ajustes necesarios hasta tu total satisfacción.',
             duration: '3-5 días',
-            color: 'cyber-neon',
+            colorClasses: {
+                badge: 'bg-[#39FF14]',
+                bg: 'bg-[#39FF14]/20',
+                border: 'border-[#39FF14]/30',
+                text: 'text-[#39FF14]',
+                timeline: 'bg-[#39FF14]/30',
+            }
         },
         {
             number: '05',
@@ -42,7 +66,13 @@ export default function Process() {
             title: 'Entrega & Soporte',
             description: 'Entrego el proyecto finalizado con documentación. Soporte post-entrega incluido.',
             duration: 'Ongoing',
-            color: 'cyber-blue',
+            colorClasses: {
+                badge: 'bg-cyber-blue',
+                bg: 'bg-cyber-blue/20',
+                border: 'border-cyber-blue/30',
+                text: 'text-cyber-blue',
+                timeline: 'bg-cyber-blue/30',
+            }
         },
     ];
 
@@ -65,7 +95,7 @@ export default function Process() {
                 {/* Desktop Timeline */}
                 <div className="hidden md:block relative">
                     {/* Connecting Line */}
-                    <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-cyber-cyan via-cyber-purple via-cyber-pink via-cyber-neon to-cyber-blue transform -translate-y-1/2 opacity-20"></div>
+                    <div className="absolute top-1/2 left-0 right-0 h-1 bg-gradient-to-r from-cyber-cyan via-cyber-purple via-cyber-pink via-[#39FF14] to-cyber-blue transform -translate-y-1/2 opacity-20"></div>
 
                     <div className="grid grid-cols-5 gap-4">
                         {steps.map((step, index) => (
@@ -73,13 +103,13 @@ export default function Process() {
                                 {/* Step Card */}
                                 <div className="glass-effect p-6 rounded-2xl border border-gray-800 hover:border-cyber-purple card-hover group">
                                     {/* Number Badge */}
-                                    <div className={`absolute -top-4 -right-4 w-12 h-12 rounded-full bg-${step.color} flex items-center justify-center font-bold text-cyber-darker shadow-xl`}>
+                                    <div className={`absolute -top-4 -right-4 w-12 h-12 rounded-full ${step.colorClasses.badge} flex items-center justify-center font-bold text-cyber-darker shadow-xl`}>
                                         {step.number}
                                     </div>
 
                                     {/* Icon */}
-                                    <div className={`w-16 h-16 rounded-xl bg-${step.color}/20 border border-${step.color}/30 flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform`}>
-                                        <step.icon className={`w-8 h-8 text-${step.color}`} />
+                                    <div className={`w-16 h-16 rounded-xl ${step.colorClasses.bg} ${step.colorClasses.border} flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform`}>
+                                        <step.icon className={`w-8 h-8 ${step.colorClasses.text}`} />
                                     </div>
 
                                     {/* Title */}
@@ -93,9 +123,9 @@ export default function Process() {
                                     </p>
 
                                     {/* Duration */}
-                                    <div className={`text-center pt-3 border-t border-gray-800`}>
+                                    <div className="text-center pt-3 border-t border-gray-800">
                                         <span className="text-gray-500 text-xs">Duración:</span>
-                                        <div className={`text-${step.color} font-semibold text-sm mt-1`}>
+                                        <div className={`${step.colorClasses.text} font-semibold text-sm mt-1`}>
                                             {step.duration}
                                         </div>
                                     </div>
@@ -111,25 +141,25 @@ export default function Process() {
                         <div key={index} className="relative pl-12">
                             {/* Timeline Line */}
                             {index !== steps.length - 1 && (
-                                <div className={`absolute left-6 top-16 bottom-0 w-0.5 bg-${step.color}/30`}></div>
+                                <div className={`absolute left-6 top-16 bottom-0 w-0.5 ${step.colorClasses.timeline}`}></div>
                             )}
 
                             {/* Number Circle */}
-                            <div className={`absolute left-0 top-0 w-12 h-12 rounded-full bg-${step.color} flex items-center justify-center font-bold text-cyber-darker shadow-xl`}>
+                            <div className={`absolute left-0 top-0 w-12 h-12 rounded-full ${step.colorClasses.badge} flex items-center justify-center font-bold text-cyber-darker shadow-xl`}>
                                 {step.number}
                             </div>
 
                             {/* Card */}
                             <div className="glass-effect p-6 rounded-2xl border border-gray-800">
                                 <div className="flex items-start gap-4 mb-4">
-                                    <div className={`w-12 h-12 rounded-lg bg-${step.color}/20 border border-${step.color}/30 flex items-center justify-center flex-shrink-0`}>
-                                        <step.icon className={`w-6 h-6 text-${step.color}`} />
+                                    <div className={`w-12 h-12 rounded-lg ${step.colorClasses.bg} ${step.colorClasses.border} flex items-center justify-center flex-shrink-0`}>
+                                        <step.icon className={`w-6 h-6 ${step.colorClasses.text}`} />
                                     </div>
                                     <div className="flex-1">
                                         <h3 className="text-lg font-bold text-white mb-1">
                                             {step.title}
                                         </h3>
-                                        <span className={`text-${step.color} text-sm font-semibold`}>
+                                        <span className={`${step.colorClasses.text} text-sm font-semibold`}>
                                             {step.duration}
                                         </span>
                                     </div>
