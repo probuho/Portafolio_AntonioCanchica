@@ -1,6 +1,6 @@
 'use client';
 
-import { FaCode, FaRocket, FaDownload } from 'react-icons/fa';
+import { FaCode, FaRocket, FaBriefcase } from 'react-icons/fa';
 
 export default function Hero() {
     return (
@@ -25,15 +25,21 @@ export default function Hero() {
                     </h1>
 
                     {/* Título */}
-                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-gray-300 mb-8">
+                    <h2 className="text-2xl md:text-4xl lg:text-5xl font-semibold text-gray-300 mb-6">
                         Junior <span className="text-cyber-pink">Full Stack</span> Developer
                     </h2>
 
+                    {/* Availability Badge */}
+                    <div className="inline-flex items-center gap-2 px-6 py-3 glass-effect rounded-full border border-cyber-neon mb-8 animate-pulse-slow">
+                        <div className="w-3 h-3 bg-cyber-neon rounded-full animate-pulse"></div>
+                        <span className="text-cyber-neon font-semibold">Disponible para Proyectos Freelance</span>
+                    </div>
+
                     {/* Descripción */}
                     <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
-                        Desarrollador apasionado por crear experiencias digitales increíbles.
+                        Transformo ideas en soluciones digitales reales. Desarrollo web, marketing digital y soporte técnico.
                         <br className="hidden md:block" />
-                        Amante de la ciencia ficción, la cultura geek y las tecnologías del futuro.
+                        <span className="text-cyber-cyan">Más de 7 años de experiencia</span> ayudando a negocios a crecer online.
                     </p>
 
                     {/* Tech Stack Preview */}
@@ -51,32 +57,32 @@ export default function Hero() {
                     {/* CTAs */}
                     <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
                         <a
-                            href="#proyectos"
+                            href="#contacto"
                             className="group relative px-8 py-4 bg-gradient-to-r from-cyber-cyan to-cyber-blue rounded-lg font-semibold text-white overflow-hidden transition-all hover:scale-105 hover:shadow-2xl hover:shadow-cyber-cyan/50"
                         >
                             <span className="relative z-10 flex items-center gap-2">
                                 <FaRocket className="group-hover:rotate-45 transition-transform" />
-                                Ver Proyectos
+                                Solicitar Cotización Gratis
                             </span>
                         </a>
 
                         <a
-                            href="#cv"
-                            className="group px-8 py-4 glass-effect rounded-lg font-semibold text-white border-2 border-cyber-pink hover:bg-cyber-pink/10 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-cyber-pink/50"
+                            href="#servicios"
+                            className="group px-8 py-4 glass-effect rounded-lg font-semibold text-white border-2 border-cyber-purple hover:bg-cyber-purple/10 transition-all hover:scale-105 hover:shadow-2xl hover:shadow-cyber-purple/50"
                         >
                             <span className="flex items-center gap-2">
-                                <FaDownload className="group-hover:animate-bounce" />
-                                Descargar CV
+                                <FaBriefcase />
+                                Ver Servicios
                             </span>
                         </a>
 
                         <a
-                            href="#contacto"
-                            className="group px-8 py-4 glass-effect rounded-lg font-semibold text-white border-2 border-cyber-purple hover:bg-cyber-purple/10 transition-all hover:scale-105"
+                            href="#proyectos"
+                            className="group px-8 py-4 glass-effect rounded-lg font-semibold text-white border-2 border-cyber-pink hover:bg-cyber-pink/10 transition-all hover:scale-105"
                         >
                             <span className="flex items-center gap-2">
-                                <FaCode />
-                                Contactar
+                                <FaCode className="group-hover:animate-bounce" />
+                                Ver Portafolio
                             </span>
                         </a>
                     </div>
