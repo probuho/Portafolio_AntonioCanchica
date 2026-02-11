@@ -17,13 +17,13 @@ export default function Navbar() {
 
     const navLinks = [
         { href: '#inicio', label: 'Inicio' },
-        { href: '#sobre-mi', label: 'Sobre Mí' },
-        { href: '#servicios', label: 'Servicios' },
-        { href: '#roadmap', label: 'Mi Trayectoria' },
-        { href: '#proyectos', label: 'Proyectos' },
-        { href: '#habilidades', label: 'Habilidades' },
-        { href: '#cv', label: 'CV' },
-        { href: '#contacto', label: 'Contacto' },
+        { href: '#sobre-mi', label: 'Sobre Mí', tab: 'portfolio' },
+        { href: '#servicios', label: 'Servicios', tab: 'freelance' },
+        { href: '#roadmap', label: 'Mi Trayectoria', tab: 'portfolio' },
+        { href: '#proyectos', label: 'Proyectos', tab: 'portfolio' },
+        { href: '#habilidades', label: 'Habilidades', tab: 'portfolio' },
+        { href: '#cv', label: 'CV', tab: 'portfolio' },
+        { href: '#contacto', label: 'Contacto', tab: 'freelance' },
     ];
 
     const socialLinks = [
@@ -31,6 +31,13 @@ export default function Navbar() {
         { href: 'https://www.linkedin.com/in/antonio-jose-ruiz-canchica-7674b4272', icon: FaLinkedin, label: 'LinkedIn' },
         { href: 'mailto:contactoprobuho@gmail.com', icon: FaEnvelope, label: 'Email' },
     ];
+
+    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, tab?: string) => {
+        // Si tiene tab asociado, disparar evento personalizado para cambiar tab
+        if (tab) {
+            window.dispatchEvent(new CustomEvent('changeTab', { detail: tab }));
+        }
+    };
 
     return (
         <nav
@@ -50,6 +57,7 @@ export default function Navbar() {
                             <a
                                 key={link.href}
                                 href={link.href}
+                                onClick={(e) => handleNavClick(e, link.tab)}
                                 className="text-gray-300 hover:text-cyber-cyan transition-colors relative group"
                             >
                                 {link.label}
@@ -93,8 +101,11 @@ export default function Navbar() {
                             <a
                                 key={link.href}
                                 href={link.href}
+                                onClick={(e) => {
+                                    handleNavClick(e, link.tab);
+                                    setIsMobileMenuOpen(false);
+                                }}
                                 className="block px-3 py-2 text-gray-300 hover:text-cyber-cyan transition-colors"
-                                onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 {link.label}
                             </a>
