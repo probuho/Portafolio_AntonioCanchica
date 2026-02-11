@@ -6,31 +6,75 @@ export default function CV() {
     const experience = [
         {
             title: 'Junior Full Stack Developer',
-            company: 'Proyectos Personales',
-            period: '2024 - Presente',
-            description: 'Desarrollo de marketplace y aplicaciones web con React, TypeScript y Next.js',
+            company: 'Proyectos Personales y Freelance',
+            period: '2020 - Presente',
+            description: 'Desarrollo de aplicaciones web modernas con React, TypeScript y Next.js aplicando IA',
             achievements: [
-                'Desarrollo de plataforma marketplace completa',
-                'Implementación de interfaces modernas y responsivas',
-                'Integración con APIs y bases de datos',
+                'Desarrollo de plataforma marketplace con integración de APIs',
+                'Implementación de interfaces con diseño UX/UI moderno',
+                'Aplicación de IA generativa en desarrollo siguiendo mejores prácticas',
+                'Creación de contenido digital y gestión de redes sociales',
+            ],
+        },
+        {
+            title: 'Encargado - Soporte Técnico',
+            company: 'Multiservicios Computer Service R&J, C.A',
+            period: 'Jul 2017 - Oct 2019',
+            description: 'Gestión de operaciones técnicas y reparación de equipos informáticos',
+            achievements: [
+                'Diagnóstico y reparación de hardware y software',
+                'Instalación y configuración de sistemas operativos',
+                'Mantenimiento preventivo y correctivo de equipos',
+                'Atención técnica directa a clientes',
+            ],
+        },
+        {
+            title: 'Encargado - Operaciones Técnicas',
+            company: 'Inversiones Ultraviolet F.V 2013',
+            period: 'Sep 2013 - Mar 2017',
+            description: 'Supervisión de operaciones diarias y gestión de inventario técnico',
+            achievements: [
+                'Gestión de inventario de equipos tecnológicos',
+                'Supervisión de sistemas y equipamiento técnico',
+                'Soporte técnico a clientes',
+            ],
+        },
+        {
+            title: 'Vendedor Técnico',
+            company: 'La Boutique Tecnológica C.A',
+            period: 'Abr 2013 - Sep 2014',
+            description: 'Venta y asesoría en productos tecnológicos',
+            achievements: [
+                'Asesoría técnica a clientes sobre hardware',
+                'Configuración de equipos tecnológicos',
             ],
         },
     ];
 
     const education = [
         {
-            degree: 'Desarrollo Web',
-            institution: 'Estudios Universitarios',
-            period: 'En curso',
-            description: 'Formación en desarrollo web full stack y tecnologías modernas',
+            degree: 'PNF. Ingeniería en Informática',
+            institution: 'Universidad Nacional Experimental de las Telecomunicaciones e Informática (UNETI)',
+            period: 'Sep 2019 - Presente',
+            description: 'Actualmente cursando 3er Trimestre, Trayecto 1. Formación en desarrollo de software, sistemas y telecomunicaciones',
+        },
+        {
+            degree: 'Bachiller en Ciencias',
+            institution: 'U.E Pedagogía Moderna',
+            period: '2006 - 2011',
+            description: 'Educación secundaria con énfasis en ciencias',
         },
     ];
 
     const certifications = [
-        'Desarrollo Web Front-End',
-        'JavaScript y TypeScript',
-        'React y Next.js',
-        'Desarrollo con Laravel',
+        'Social Media Manager - Creative Diseños Academy (2021)',
+        'Community Manager Online - Creative Diseños Academy (2021)',
+        'Community Manager - ALPESINC Agencia de Marketing (2021)',
+        'Seguridad Electrónica 1 - Instituto Keys (2017-2018)',
+        'Asistente Administrativo - Academia Americana (2015)',
+        'Reparación de Celulares - Academia Americana (2014)',
+        'Mantenimiento y Reparación de Impresoras - Instituto Keys (2013)',
+        'Técnico de Reparación de Laptops - Instituto Keys (2012)',
     ];
 
     return (

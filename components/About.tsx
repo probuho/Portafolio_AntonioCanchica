@@ -52,19 +52,24 @@ export default function About() {
                                 ¡Hola! Soy Antonio 👋
                             </h3>
                             <p className="text-gray-300 leading-relaxed mb-4">
-                                Soy un <span className="text-cyber-pink font-semibold">Junior Full Stack Developer</span> apasionado
-                                por crear soluciones digitales innovadoras. Actualmente estoy aprendiendo y creciendo en el mundo
-                                del desarrollo web, trabajando con tecnologías como <span className="text-cyber-cyan">React</span>,{' '}
-                                <span className="text-cyber-cyan">TypeScript</span> y <span className="text-cyber-cyan">Next.js</span>.
+                                Soy un <span className="text-cyber-pink font-semibold">Junior Full Stack Developer</span> con una
+                                sólida base en <span className="text-cyber-cyan">soporte técnico</span> y{' '}
+                                <span className="text-cyber-cyan">redes</span>. Durante años trabajé diagnosticando hardware,
+                                configurando sistemas y gestionando operaciones técnicas, lo que me dio una comprensión profunda
+                                de cómo funcionan los sistemas desde adentro.
                             </p>
                             <p className="text-gray-300 leading-relaxed mb-4">
-                                Mi viaje como desarrollador está impulsado por mi amor a la <span className="text-cyber-purple font-semibold">ciencia ficción</span> y
-                                la <span className="text-cyber-purple font-semibold">cultura geek</span>. Creo que la tecnología es
-                                nuestro puente hacia el futuro que hemos imaginado en películas como Blade Runner o Matrix.
+                                Actualmente estudio <span className="text-cyber-purple font-semibold">Ingeniería en Informática en UNETI</span> y
+                                me especializo en desarrollo web moderno con <span className="text-cyber-cyan">React</span>,{' '}
+                                <span className="text-cyber-cyan">TypeScript</span> y <span className="text-cyber-cyan">Next.js</span>.
+                                También aplico <span className="text-cyber-neon font-semibold">IA generativa</span> en mis proyectos,
+                                siguiendo las mejores prácticas y convenciones del desarrollo profesional.
                             </p>
                             <p className="text-gray-300 leading-relaxed">
-                                Actualmente estoy buscando oportunidades para demostrar mis habilidades y seguir aprendiendo.
-                                Me motiva crear proyectos que no solo funcionen bien, sino que también inspiren.
+                                Mi combinación única de <span className="text-cyber-purple font-semibold">experiencia técnica práctica</span> y{' '}
+                                <span className="text-cyber-purple font-semibold">desarrollo web moderno</span> me permite crear
+                                soluciones completas y robustas. Como fanático de la ciencia ficción (Blade Runner, Matrix, Cyberpunk),
+                                creo que la tecnología es nuestro puente hacia el futuro que imaginamos.
                             </p>
                         </div>
 

@@ -6,44 +6,58 @@ import { SiTypescript, SiNextdotjs, SiTailwindcss, SiJavascript, SiFigma, SiPost
 export default function Skills() {
     const skillCategories = [
         {
-            title: 'Frontend',
+            title: 'Frontend & Diseño',
             color: 'cyber-cyan',
             skills: [
                 { name: 'React', icon: FaReact, level: 75 },
                 { name: 'TypeScript', icon: SiTypescript, level: 70 },
                 { name: 'Next.js', icon: SiNextdotjs, level: 65 },
-                { name: 'HTML5', icon: FaHtml5, level: 90 },
-                { name: 'Tailwind CSS', icon: SiTailwindcss, level: 80 },
+                { name: 'HTML5', icon: FaHtml5, level: 85 },
+                { name: 'CSS3', icon: SiTailwindcss, level: 80 },
                 { name: 'JavaScript', icon: SiJavascript, level: 75 },
             ],
         },
         {
-            title: 'Backend',
+            title: 'Backend & Bases de Datos',
             color: 'cyber-purple',
             skills: [
-                { name: 'Laravel', icon: FaLaravel, level: 40 },
+                { name: 'Laravel', icon: FaLaravel, level: 45 },
                 { name: 'Node.js', icon: FaNodeJs, level: 55 },
                 { name: 'PostgreSQL', icon: SiPostgresql, level: 50 },
                 { name: 'Databases', icon: FaDatabase, level: 60 },
             ],
         },
         {
-            title: 'Herramientas',
+            title: 'Sistemas & Redes',
             color: 'cyber-pink',
+            skills: [
+                { name: 'Windows', icon: FaNodeJs, level: 90 },
+                { name: 'Linux Ubuntu', icon: FaDatabase, level: 70 },
+                { name: 'Redes LAN', icon: FaGitAlt, level: 75 },
+                { name: 'Cableado', icon: FaGitAlt, level: 80 },
+            ],
+        },
+        {
+            title: 'Herramientas & IA',
+            color: 'cyber-neon',
             skills: [
                 { name: 'Git', icon: FaGitAlt, level: 70 },
                 { name: 'Figma', icon: SiFigma, level: 55 },
+                { name: 'IA Generativa', icon: FaReact, level: 75 },
+                { name: 'Photoshop', icon: SiFigma, level: 65 },
             ],
         },
     ];
 
     const softSkills = [
         'Trabajo en equipo',
-        'Resolución de problemas',
+        'Resolución de problemas técnicos',
         'Aprendizaje rápido',
-        'Creatividad',
+        'Atención al cliente',
         'Pensamiento analítico',
-        'Comunicación efectiva',
+        'Gestión de proyectos',
+        'Creatividad digital',
+        'Adaptabilidad',
     ];
 
     return (
