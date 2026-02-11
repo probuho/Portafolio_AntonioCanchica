@@ -47,7 +47,7 @@ export default function Process() {
     ];
 
     return (
-        <section className="relative py-20 md:py-32 overflow-hidden bg-cyber-dark">
+        <section id="proceso" className="relative py-20 md:py-32 overflow-hidden bg-cyber-dark">
             <div className="absolute inset-0 bg-gradient-to-b from-cyber-darker/50 to-transparent"></div>
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

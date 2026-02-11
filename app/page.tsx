@@ -1,9 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import TabSwitcher from '@/components/TabSwitcher';
 import About from '@/components/About';
 import Services from '@/components/Services';
 import Process from '@/components/Process';
@@ -17,29 +16,13 @@ import Footer from '@/components/Footer';
 export default function Home() {
     const [activeTab, setActiveTab] = useState<'freelance' | 'portfolio'>('freelance');
 
-    // Escuchar eventos del navbar para cambiar de tab
-    useEffect(() => {
-        const handleTabChange = (e: CustomEvent) => {
-            setActiveTab(e.detail as 'freelance' | 'portfolio');
-        };
-
-        window.addEventListener('changeTab', handleTabChange as EventListener);
-        return () => window.removeEventListener('changeTab', handleTabChange as EventListener);
-    }, []);
-
     return (
         <main className="relative min-h-screen">
-            {/* Navbar - Siempre visible */}
-            <Navbar />
+            {/* Navbar con tabs integrados */}
+            <Navbar activeTab={activeTab} onTabChange={setActiveTab} />
 
             {/* Hero - Siempre visible */}
             <Hero />
-
-            {/* Tab Switcher - Sticky */}
-            <TabSwitcher
-                activeTab={activeTab}
-                onTabChange={setActiveTab}
-            />
 
             {/* CONTENIDO FREELANCE */}
             {activeTab === 'freelance' && (

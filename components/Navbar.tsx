@@ -1,9 +1,14 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaEnvelope, FaBars, FaTimes, FaBriefcase, FaUser } from 'react-icons/fa';
 
-export default function Navbar() {
+interface NavbarProps {
+    activeTab: 'freelance' | 'portfolio';
+    onTabChange: (tab: 'freelance' | 'portfolio') => void;
+}
+
+export default function Navbar({ activeTab, onTabChange }: NavbarProps) {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -15,29 +20,30 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navLinks = [
+    // Links que cambian según el tab activo
+    const freelanceLinks = [
         { href: '#inicio', label: 'Inicio' },
-        { href: '#sobre-mi', label: 'Sobre Mí', tab: 'portfolio' },
-        { href: '#servicios', label: 'Servicios', tab: 'freelance' },
-        { href: '#roadmap', label: 'Mi Trayectoria', tab: 'portfolio' },
-        { href: '#proyectos', label: 'Proyectos', tab: 'portfolio' },
-        { href: '#habilidades', label: 'Habilidades', tab: 'portfolio' },
-        { href: '#cv', label: 'CV', tab: 'portfolio' },
-        { href: '#contacto', label: 'Contacto', tab: 'freelance' },
+        { href: '#servicios', label: 'Servicios' },
+        { href: '#proceso', label: 'Cómo Trabajo' },
+        { href: '#contacto', label: 'Contacto' },
     ];
+
+    const portfolioLinks = [
+        { href: '#inicio', label: 'Inicio' },
+        { href: '#sobre-mi', label: 'Sobre Mí' },
+        { href: '#roadmap', label: 'Trayectoria' },
+        { href: '#proyectos', label: 'Proyectos' },
+        { href: '#habilidades', label: 'Skills' },
+        { href: '#cv', label: 'CV' },
+    ];
+
+    const currentLinks = activeTab === 'freelance' ? freelanceLinks : portfolioLinks;
 
     const socialLinks = [
         { href: 'https://github.com/probuho', icon: FaGithub, label: 'GitHub' },
         { href: 'https://www.linkedin.com/in/antonio-jose-ruiz-canchica-7674b4272', icon: FaLinkedin, label: 'LinkedIn' },
         { href: 'mailto:contactoprobuho@gmail.com', icon: FaEnvelope, label: 'Email' },
     ];
-
-    const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, tab?: string) => {
-        // Si tiene tab asociado, disparar evento personalizado para cambiar tab
-        if (tab) {
-            window.dispatchEvent(new CustomEvent('changeTab', { detail: tab }));
-        }
-    };
 
     return (
         <nav
@@ -52,13 +58,48 @@ export default function Navbar() {
                     </a>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex space-x-8">
-                        {navLinks.map((link) => (
+                    <div className="hidden lg:flex items-center space-x-6">
+                        {/* Tab Switcher integrado */}
+                        <div className="flex items-center gap-2 px-2 py-1 glass-effect rounded-full border border-gray-700">
+                            <button
+                                onClick={() => onTabChange('freelance')}
+                                className={`
+                                    px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300
+                                    flex items-center gap-2
+                                    ${activeTab === 'freelance'
+                                        ? 'bg-gradient-to-r from-cyber-cyan to-cyber-blue text-white shadow-lg'
+                                        : 'text-gray-400 hover:text-white'
+                                    }
+                                `}
+                            >
+                                <FaBriefcase className="w-4 h-4" />
+                                <span>Contrátame</span>
+                            </button>
+                            <button
+                                onClick={() => onTabChange('portfolio')}
+                                className={`
+                                    px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300
+                                    flex items-center gap-2
+                                    ${activeTab === 'portfolio'
+                                        ? 'bg-gradient-to-r from-cyber-purple to-cyber-pink text-white shadow-lg'
+                                        : 'text-gray-400 hover:text-white'
+                                    }
+                                `}
+                            >
+                                <FaUser className="w-4 h-4" />
+                                <span>Portafolio</span>
+                            </button>
+                        </div>
+
+                        {/* Divider */}
+                        <div className="h-8 w-px bg-gray-700"></div>
+
+                        {/* Links según tab activo */}
+                        {currentLinks.map((link) => (
                             <a
                                 key={link.href}
                                 href={link.href}
-                                onClick={(e) => handleNavClick(e, link.tab)}
-                                className="text-gray-300 hover:text-cyber-cyan transition-colors relative group"
+                                className="text-gray-300 hover:text-cyber-cyan transition-colors relative group text-sm"
                             >
                                 {link.label}
                                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-neon group-hover:w-full transition-all duration-300"></span>
@@ -84,7 +125,7 @@ export default function Navbar() {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden text-white"
+                        className="lg:hidden text-white"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         aria-label="Toggle menu"
                     >
@@ -95,21 +136,64 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             {isMobileMenuOpen && (
-                <div className="md:hidden glass-effect border-t border-gray-800">
+                <div className="lg:hidden glass-effect border-t border-gray-800">
                     <div className="px-2 pt-2 pb-3 space-y-1">
-                        {navLinks.map((link) => (
+                        {/* Tab Switcher Mobile */}
+                        <div className="px-3 py-2">
+                            <div className="flex gap-2">
+                                <button
+                                    onClick={() => {
+                                        onTabChange('freelance');
+                                        setIsMobileMenuOpen(false);
+                                    }}
+                                    className={`
+                                        flex-1 px-4 py-3 rounded-lg font-semibold text-sm transition-all
+                                        flex items-center justify-center gap-2
+                                        ${activeTab === 'freelance'
+                                            ? 'bg-gradient-to-r from-cyber-cyan to-cyber-blue text-white'
+                                            : 'glass-effect text-gray-400'
+                                        }
+                                    `}
+                                >
+                                    <FaBriefcase />
+                                    Contrátame
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        onTabChange('portfolio');
+                                        setIsMobileMenuOpen(false);
+                                    }}
+                                    className={`
+                                        flex-1 px-4 py-3 rounded-lg font-semibold text-sm transition-all
+                                        flex items-center justify-center gap-2
+                                        ${activeTab === 'portfolio'
+                                            ? 'bg-gradient-to-r from-cyber-purple to-cyber-pink text-white'
+                                            : 'glass-effect text-gray-400'
+                                        }
+                                    `}
+                                >
+                                    <FaUser />
+                                    Portafolio
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Divider */}
+                        <div className="h-px bg-gray-700 my-2"></div>
+
+                        {/* Links según tab */}
+                        {currentLinks.map((link) => (
                             <a
                                 key={link.href}
                                 href={link.href}
-                                onClick={(e) => {
-                                    handleNavClick(e, link.tab);
-                                    setIsMobileMenuOpen(false);
-                                }}
+                                onClick={() => setIsMobileMenuOpen(false)}
                                 className="block px-3 py-2 text-gray-300 hover:text-cyber-cyan transition-colors"
                             >
                                 {link.label}
                             </a>
                         ))}
+
+                        {/* Social Links Mobile */}
                         <div className="flex space-x-4 px-3 pt-4">
                             {socialLinks.map((social) => (
                                 <a
