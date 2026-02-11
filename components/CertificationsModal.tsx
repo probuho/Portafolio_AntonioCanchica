@@ -10,7 +10,7 @@ interface Certification {
     year: string;
     description?: string;
     verified: boolean;
-    certificatePath?: string; // Puede ser .jpg, .png, o .pdf - se detecta automáticamente
+    certificatePath?: string;
     category: 'marketing' | 'tecnico' | 'administrativo' | 'desarrollo' | 'otro';
 }
 
@@ -26,17 +26,17 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
 
     if (!isOpen) return null;
 
-    // 🎓 AQUÍ PUEDES AGREGAR TODOS TUS CERTIFICADOS
-    // Solo cambia el nombre del archivo según lo que tengas (puede ser .jpg, .png, o .pdf)
+    // 🎓 CERTIFICADOS REALES DE ANTONIO
+    // Los paths coinciden EXACTAMENTE con los archivos en public/certificates/
     const certifications: Certification[] = [
-        // === MARKETING DIGITAL === 
+        // === MARKETING DIGITAL (3 PDFs) === 
         {
             title: 'Social Media Manager',
             institution: 'Creative Diseños Academy',
             year: '2021',
             description: 'Gestión profesional de redes sociales y estrategias de contenido digital',
             verified: true,
-            certificatePath: '/certificates/social-media-manager.jpg', // Cambia a .pdf si lo tienes en PDF
+            certificatePath: '/certificates/social-media-manager.pdf',
             category: 'marketing',
         },
         {
@@ -45,7 +45,7 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
             year: '2021',
             description: 'Administración de comunidades digitales y engagement',
             verified: true,
-            certificatePath: '/certificates/community-manager-online.pdf', // Ejemplo de PDF
+            certificatePath: '/certificates/community-manager-online.pdf',
             category: 'marketing',
         },
         {
@@ -54,27 +54,18 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
             year: '2021',
             description: 'Estrategias de marketing digital y gestión de marca',
             verified: true,
-            certificatePath: '/certificates/community-manager.jpg',
+            certificatePath: '/certificates/community-manager.pdf',
             category: 'marketing',
         },
 
-        // === TÉCNICO/HARDWARE ===
+        // === TÉCNICO/HARDWARE (2 JPGs) ===
         {
-            title: 'Seguridad Electrónica 1',
-            institution: 'Instituto de Capacitación Técnica Keys, C.A',
-            year: '2017-2018',
-            description: 'Instalación y configuración de sistemas de seguridad electrónica',
+            title: 'Técnico de Reparación de Laptops',
+            institution: 'Instituto de Capacitación Técnica Keys',
+            year: '2012',
+            description: 'Diagnóstico y reparación de hardware y software en laptops',
             verified: true,
-            certificatePath: '/certificates/seguridad-electronica.jpg',
-            category: 'tecnico',
-        },
-        {
-            title: 'Reparación de Celulares',
-            institution: 'Academia Americana',
-            year: '2014',
-            description: 'Diagnóstico y reparación de dispositivos móviles',
-            verified: true,
-            certificatePath: '/certificates/reparacion-celulares.jpg',
+            certificatePath: '/certificates/reparacion-laptops.jpg',
             category: 'tecnico',
         },
         {
@@ -86,17 +77,8 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
             certificatePath: '/certificates/reparacion-impresoras.jpg',
             category: 'tecnico',
         },
-        {
-            title: 'Técnico de Reparación de Laptops',
-            institution: 'Instituto de Capacitación Técnica Keys',
-            year: '2012',
-            description: 'Diagnóstico y reparación de hardware y software en laptops',
-            verified: true,
-            certificatePath: '/certificates/reparacion-laptops.jpg',
-            category: 'tecnico',
-        },
 
-        // === ADMINISTRATIVO ===
+        // === ADMINISTRATIVO (1 JPG) ===
         {
             title: 'Asistente Administrativo',
             institution: 'Academia Americana',
@@ -108,16 +90,16 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
         },
 
         // === AGREGA MÁS CERTIFICADOS AQUÍ ===
-        // Copia y pega este bloque para cada nuevo certificado:
+        // Ejemplo para agregar nuevos:
         /*
         {
           title: 'Nombre del Curso',
-          institution: 'Nombre de la Institución',
-          year: '2023',
-          description: 'Breve descripción del curso',
+          institution: 'Institución',
+          year: '2024',
+          description: 'Descripción breve',
           verified: true,
-          certificatePath: '/certificates/nombre-archivo.jpg', // o .pdf
-          category: 'desarrollo', // opciones: marketing, tecnico, administrativo, desarrollo, otro
+          certificatePath: '/certificates/nombre-archivo.pdf', // o .jpg
+          category: 'desarrollo', // marketing, tecnico, administrativo, desarrollo, otro
         },
         */
     ];
@@ -145,7 +127,6 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
         setTimeout(() => setSelectedCertificate(null), 300);
     };
 
-    // Contar certificaciones por categoría
     const getCategoryCount = (category: string) => {
         if (category === 'all') return certifications.length;
         return certifications.filter(cert => cert.category === category).length;
@@ -154,15 +135,12 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
     return (
         <>
             <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-fade-in">
-                {/* Backdrop */}
                 <div
                     className="absolute inset-0 bg-black/80 backdrop-blur-sm"
                     onClick={onClose}
                 ></div>
 
-                {/* Modal */}
                 <div className="relative w-full max-w-5xl max-h-[90vh] glass-effect rounded-2xl border border-cyber-cyan/30 overflow-hidden animate-slide-up">
-                    {/* Header */}
                     <div className="sticky top-0 z-10 glass-effect border-b border-gray-800 p-6">
                         <div className="flex items-center justify-between mb-4">
                             <div className="flex items-center gap-3">
@@ -187,7 +165,6 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
                             </button>
                         </div>
 
-                        {/* Filtros por categoría */}
                         <div className="flex items-center gap-2 overflow-x-auto pb-2">
                             <FaFilter className="w-4 h-4 text-gray-500 flex-shrink-0" />
                             {Object.entries(categories).map(([key, label]) => (
@@ -205,7 +182,6 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
                         </div>
                     </div>
 
-                    {/* Content */}
                     <div className="p-6 overflow-y-auto max-h-[calc(90vh-180px)]">
                         <div className="grid md:grid-cols-2 gap-4">
                             {filteredCertifications.map((cert, index) => (
@@ -213,7 +189,6 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
                                     key={index}
                                     className="glass-effect p-5 rounded-xl border border-gray-800 hover:border-cyber-purple card-hover group"
                                 >
-                                    {/* Header */}
                                     <div className="flex items-start justify-between mb-3">
                                         <div className="flex-1">
                                             <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyber-purple transition-colors">
@@ -230,21 +205,18 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
                                         )}
                                     </div>
 
-                                    {/* Year */}
                                     <div className="mb-3">
                                         <span className="inline-block px-3 py-1 bg-cyber-purple/20 border border-cyber-purple/30 rounded-lg text-cyber-purple text-xs font-mono">
                                             {cert.year}
                                         </span>
                                     </div>
 
-                                    {/* Description */}
                                     {cert.description && (
                                         <p className="text-gray-400 text-sm mb-3">
                                             {cert.description}
                                         </p>
                                     )}
 
-                                    {/* Footer con botón Ver Certificado */}
                                     <div className="pt-3 border-t border-gray-800 space-y-2">
                                         <div className="flex items-center justify-between text-xs text-gray-500">
                                             <span className="flex items-center gap-1">
@@ -252,13 +224,12 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
                                                 Completado
                                             </span>
                                             {cert.certificatePath && (
-                                                <span className="text-cyber-cyan text-[10px]">
-                                                    {cert.certificatePath.endsWith('.pdf') ? 'PDF' : 'IMG'}
+                                                <span className="text-cyber-cyan text-[10px] font-semibold">
+                                                    {cert.certificatePath.endsWith('.pdf') ? '📄 PDF' : '🖼️ IMG'}
                                                 </span>
                                             )}
                                         </div>
 
-                                        {/* Botón Ver Certificado */}
                                         <button
                                             onClick={() => handleViewCertificate(cert)}
                                             className="w-full px-4 py-2 bg-cyber-cyan/20 border border-cyber-cyan hover:bg-cyber-cyan/30 rounded-lg text-cyber-cyan font-semibold transition-all hover:scale-105 flex items-center justify-center gap-2 text-sm"
@@ -277,7 +248,6 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
                             </div>
                         )}
 
-                        {/* Note */}
                         <div className="mt-6 glass-effect p-4 rounded-xl border border-cyber-cyan/30 bg-cyber-cyan/5">
                             <p className="text-gray-300 text-sm text-center">
                                 <FaCheckCircle className="inline w-4 h-4 text-cyber-neon mr-2" />
@@ -288,7 +258,6 @@ export default function CertificationsModal({ isOpen, onClose }: CertificationsM
                 </div>
             </div>
 
-            {/* Certificate Viewer */}
             {selectedCertificate && (
                 <CertificateViewer
                     isOpen={viewerOpen}
