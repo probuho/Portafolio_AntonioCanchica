@@ -107,7 +107,7 @@ export default function About() {
                 <div className="mt-16 text-center">
                     <blockquote className="glass-effect p-8 rounded-2xl border border-cyber-pink/30 max-w-3xl mx-auto">
                         <p className="text-xl md:text-2xl text-gray-300 italic mb-4">
-                            "El futuro no se predice, se construye línea por línea de código."
+                            &quot;El futuro no se predice, se construye línea por línea de código.&quot;
                         </p>
                         <footer className="text-cyber-pink font-semibold">— Antonio Ruiz Canchica</footer>
                     </blockquote>

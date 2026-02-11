@@ -119,7 +119,7 @@ export default function Footer() {
                 {/* Easter Egg - Quote */}
                 <div className="mt-8 text-center">
                     <p className="text-gray-600 text-xs italic font-mono">
-                        "En un mundo de código infinito, cada bug es una aventura." - Antonio RC
+                        &quot;En un mundo de código infinito, cada bug es una aventura.&quot; - Antonio RC
                     </p>
                 </div>
             </div>
