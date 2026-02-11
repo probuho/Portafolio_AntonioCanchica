@@ -1,14 +1,18 @@
 'use client';
 
+import { useState } from 'react';
 import { FaDownload, FaBriefcase, FaGraduationCap, FaCertificate, FaCode } from 'react-icons/fa';
+import CertificationsModal from './CertificationsModal';
 
 export default function CV() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const experience = [
         {
             title: 'Junior Full Stack Developer',
             company: 'Proyectos Personales y Freelance',
             period: '2020 - Presente',
-            description: 'Desarrollo de aplicaciones web modernas con React, TypeScript y Next.js aplicando IA',
+            description: 'Desarrollo de aplicaciones web modernas con React, TypeScript y Next.js aplicando IA generativa',
             achievements: [
                 'Desarrollo de plataforma marketplace con integración de APIs',
                 'Implementación de interfaces con diseño UX/UI moderno',
@@ -17,35 +21,39 @@ export default function CV() {
             ],
         },
         {
-            title: 'Encargado - Soporte Técnico',
+            title: 'Encargado de Tienda - Gestión Integral',
             company: 'Multiservicios Computer Service R&J, C.A',
             period: 'Jul 2017 - Oct 2019',
-            description: 'Gestión de operaciones técnicas y reparación de equipos informáticos',
+            description: 'Gestión completa de operaciones técnicas y administrativas como responsable de tienda',
             achievements: [
-                'Diagnóstico y reparación de hardware y software',
-                'Instalación y configuración de sistemas operativos',
-                'Mantenimiento preventivo y correctivo de equipos',
-                'Atención técnica directa a clientes',
+                'Atención directa a clientes y diagnóstico de necesidades técnicas',
+                'Diagnóstico, reparación y mantenimiento de computadoras y equipos',
+                'Gestión de compras e inventario de productos tecnológicos',
+                'Generación de reportes diarios de ventas y control de gestión',
+                'Supervisión de todas las operaciones de la tienda',
             ],
         },
         {
-            title: 'Encargado - Operaciones Técnicas',
+            title: 'Encargado de Tienda - Operaciones y Soporte',
             company: 'Inversiones Ultraviolet F.V 2013',
             period: 'Sep 2013 - Mar 2017',
-            description: 'Supervisión de operaciones diarias y gestión de inventario técnico',
+            description: 'Gestión de tienda especializada en videojuegos y películas con soporte técnico avanzado',
             achievements: [
-                'Gestión de inventario de equipos tecnológicos',
-                'Supervisión de sistemas y equipamiento técnico',
-                'Soporte técnico a clientes',
+                'Supervisión completa de operaciones diarias',
+                'Gestión de inventario digital y físico',
+                'Solución creativa de problemas técnicos',
+                'Creación de menús de discos y masterización digital',
+                'Búsqueda y edición de contenido multimedia',
+                'Atención y asesoría a clientes',
             ],
         },
         {
             title: 'Vendedor Técnico',
             company: 'La Boutique Tecnológica C.A',
             period: 'Abr 2013 - Sep 2014',
-            description: 'Venta y asesoría en productos tecnológicos',
+            description: 'Venta y asesoría técnica en productos tecnológicos',
             achievements: [
-                'Asesoría técnica a clientes sobre hardware',
+                'Asesoría técnica especializada a clientes',
                 'Configuración de equipos tecnológicos',
             ],
         },
@@ -53,16 +61,18 @@ export default function CV() {
 
     const education = [
         {
-            degree: 'PNF. Ingeniería en Informática',
+            degree: 'Técnico Superior Universitario en Informática',
             institution: 'Universidad Nacional Experimental de las Telecomunicaciones e Informática (UNETI)',
-            period: 'Sep 2019 - Presente',
-            description: 'Actualmente cursando 3er Trimestre, Trayecto 1. Formación en desarrollo de software, sistemas y telecomunicaciones',
+            period: 'Sep 2019 - 2025',
+            description: 'Ciclo completado. Formación integral en desarrollo de software, sistemas, redes y telecomunicaciones',
+            status: 'Completado',
         },
         {
             degree: 'Bachiller en Ciencias',
             institution: 'U.E Pedagogía Moderna',
             period: '2006 - 2011',
             description: 'Educación secundaria con énfasis en ciencias',
+            status: 'Completado',
         },
     ];
 
@@ -150,18 +160,35 @@ export default function CV() {
 
                         {/* Certificaciones */}
                         <div className="glass-effect p-6 rounded-2xl border border-cyber-purple/30">
-                            <h3 className="text-xl font-bold text-cyber-purple mb-4 flex items-center gap-2">
-                                <FaCertificate />
-                                Certificaciones
+                            <h3 className="text-xl font-bold text-cyber-purple mb-4 flex items-center justify-between">
+                                <span className="flex items-center gap-2">
+                                    <FaCertificate />
+                                    Certificaciones
+                                </span>
+                                <span className="text-sm font-normal text-gray-400">
+                                    {certifications.length} completadas
+                                </span>
                             </h3>
-                            <ul className="space-y-2">
-                                {certifications.map((cert, idx) => (
-                                    <li key={idx} className="flex items-start gap-2 text-gray-300">
+                            <ul className="space-y-2 mb-4">
+                                {certifications.slice(0, 4).map((cert, idx) => (
+                                    <li key={idx} className="flex items-start gap-2 text-gray-300 text-sm">
                                         <span className="text-cyber-purple mt-1">▹</span>
                                         <span>{cert}</span>
                                     </li>
                                 ))}
                             </ul>
+                            {certifications.length > 4 && (
+                                <p className="text-gray-400 text-sm mb-4">
+                                    + {certifications.length - 4} certificaciones más
+                                </p>
+                            )}
+                            <button
+                                onClick={() => setIsModalOpen(true)}
+                                className="w-full px-4 py-3 bg-cyber-purple/20 border border-cyber-purple hover:bg-cyber-purple/30 rounded-lg text-cyber-purple font-semibold transition-all hover:scale-105 flex items-center justify-center gap-2"
+                            >
+                                <FaCertificate />
+                                Ver Todas las Certificaciones
+                            </button>
                         </div>
                     </div>
 
@@ -224,6 +251,9 @@ export default function CV() {
                     </div>
                 </div>
             </div>
+
+            {/* Modal de Certificaciones */}
+            <CertificationsModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </section>
     );
 }

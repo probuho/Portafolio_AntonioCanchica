@@ -1,0 +1,180 @@
+'use client';
+
+import { useState } from 'react';
+import { FaTimes, FaCertificate, FaExternalLinkAlt, FaCheckCircle } from 'react-icons/fa';
+
+interface Certification {
+    title: string;
+    institution: string;
+    year: string;
+    description?: string;
+    verified: boolean;
+}
+
+interface CertificationsModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+export default function CertificationsModal({ isOpen, onClose }: CertificationsModalProps) {
+    if (!isOpen) return null;
+
+    const certifications: Certification[] = [
+        {
+            title: 'Social Media Manager',
+            institution: 'Creative Diseños Academy',
+            year: '2021',
+            description: 'Gestión profesional de redes sociales y estrategias de contenido digital',
+            verified: true,
+        },
+        {
+            title: 'Community Manager Online',
+            institution: 'Creative Diseños Academy',
+            year: '2021',
+            description: 'Administración de comunidades digitales y engagement',
+            verified: true,
+        },
+        {
+            title: 'Community Manager',
+            institution: 'ALPESINC Agencia de Marketing',
+            year: '2021',
+            description: 'Estrategias de marketing digital y gestión de marca',
+            verified: true,
+        },
+        {
+            title: 'Seguridad Electrónica 1',
+            institution: 'Instituto de Capacitación Técnica Keys, C.A',
+            year: '2017-2018',
+            description: 'Instalación y configuración de sistemas de seguridad electrónica',
+            verified: true,
+        },
+        {
+            title: 'Asistente Administrativo',
+            institution: 'Academia Americana',
+            year: '2015',
+            description: 'Gestión administrativa y herramientas ofimáticas',
+            verified: true,
+        },
+        {
+            title: 'Reparación de Celulares',
+            institution: 'Academia Americana',
+            year: '2014',
+            description: 'Diagnóstico y reparación de dispositivos móviles',
+            verified: true,
+        },
+        {
+            title: 'Mantenimiento y Reparación de Impresoras',
+            institution: 'Instituto de Capacitación Técnica Keys',
+            year: '2013',
+            description: 'Mantenimiento preventivo y correctivo de equipos de impresión',
+            verified: true,
+        },
+        {
+            title: 'Técnico de Reparación de Laptops',
+            institution: 'Instituto de Capacitación Técnica Keys',
+            year: '2012',
+            description: 'Diagnóstico y reparación de hardware y software en laptops',
+            verified: true,
+        },
+    ];
+
+    return (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 animate-fade-in">
+            {/* Backdrop */}
+            <div
+                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                onClick={onClose}
+            ></div>
+
+            {/* Modal */}
+            <div className="relative w-full max-w-4xl max-h-[90vh] glass-effect rounded-2xl border border-cyber-cyan/30 overflow-hidden animate-slide-up">
+                {/* Header */}
+                <div className="sticky top-0 z-10 glass-effect border-b border-gray-800 p-6">
+                    <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                            <div className="w-12 h-12 bg-cyber-purple/20 rounded-lg flex items-center justify-center">
+                                <FaCertificate className="w-6 h-6 text-cyber-purple" />
+                            </div>
+                            <div>
+                                <h2 className="text-2xl font-bold text-white">
+                                    Certificaciones Profesionales
+                                </h2>
+                                <p className="text-gray-400 text-sm">
+                                    {certifications.length} certificaciones completadas
+                                </p>
+                            </div>
+                        </div>
+                        <button
+                            onClick={onClose}
+                            className="w-10 h-10 flex items-center justify-center rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 transition-all"
+                            aria-label="Cerrar modal"
+                        >
+                            <FaTimes className="w-5 h-5" />
+                        </button>
+                    </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 overflow-y-auto max-h-[calc(90vh-120px)]">
+                    <div className="grid md:grid-cols-2 gap-4">
+                        {certifications.map((cert, index) => (
+                            <div
+                                key={index}
+                                className="glass-effect p-5 rounded-xl border border-gray-800 hover:border-cyber-purple card-hover group"
+                            >
+                                {/* Header */}
+                                <div className="flex items-start justify-between mb-3">
+                                    <div className="flex-1">
+                                        <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyber-purple transition-colors">
+                                            {cert.title}
+                                        </h3>
+                                        <p className="text-cyber-cyan text-sm font-semibold">
+                                            {cert.institution}
+                                        </p>
+                                    </div>
+                                    {cert.verified && (
+                                        <div className="flex-shrink-0 ml-2">
+                                            <FaCheckCircle className="w-5 h-5 text-cyber-neon" title="Certificación verificada" />
+                                        </div>
+                                    )}
+                                </div>
+
+                                {/* Year */}
+                                <div className="mb-3">
+                                    <span className="inline-block px-3 py-1 bg-cyber-purple/20 border border-cyber-purple/30 rounded-lg text-cyber-purple text-xs font-mono">
+                                        {cert.year}
+                                    </span>
+                                </div>
+
+                                {/* Description */}
+                                {cert.description && (
+                                    <p className="text-gray-400 text-sm mb-3">
+                                        {cert.description}
+                                    </p>
+                                )}
+
+                                {/* Footer */}
+                                <div className="pt-3 border-t border-gray-800">
+                                    <div className="flex items-center justify-between text-xs text-gray-500">
+                                        <span className="flex items-center gap-1">
+                                            <FaCheckCircle className="w-3 h-3 text-cyber-neon" />
+                                            Completado
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Note */}
+                    <div className="mt-6 glass-effect p-4 rounded-xl border border-cyber-cyan/30 bg-cyber-cyan/5">
+                        <p className="text-gray-300 text-sm text-center">
+                            <FaCheckCircle className="inline w-4 h-4 text-cyber-neon mr-2" />
+                            Todas las certificaciones han sido verificadas y completadas exitosamente
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}

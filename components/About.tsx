@@ -71,6 +71,11 @@ export default function About() {
                                 soluciones completas y robustas. Como fanático de la ciencia ficción (Blade Runner, Matrix, Cyberpunk),
                                 creo que la tecnología es nuestro puente hacia el futuro que imaginamos.
                             </p>
+                            <p className="text-gray-300 leading-relaxed mt-4 pt-4 border-t border-gray-800">
+                                <span className="text-cyber-neon font-semibold">Mi mayor motivación:</span> Mi esposa y mis dos hijos son
+                                el motor que me impulsa cada día a superarme y dar lo mejor de mí. Cada línea de código que escribo,
+                                cada desafío que enfrento, lleva el propósito de construir un mejor futuro para mi familia.
+                            </p>
                         </div>
 
                         <div className="flex flex-wrap gap-3">
